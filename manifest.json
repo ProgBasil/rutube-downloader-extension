@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Rutube Downloader",
   "version": "2.0.0",
-  "description": "Скачивание видео с Rutube",
+  "description": "Download video from Rutube",
   "permissions": [
     "activeTab",
     "scripting",
