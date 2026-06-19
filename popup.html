@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rutube Downloader</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <div class="logo">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="24" height="24" rx="6" fill="#000"/>
+          <path d="M8 6L18 12L8 18V6Z" fill="#fff"/>
+        </svg>
+        <h1>Rutube Downloader</h1>
+      </div>
+      <span class="version">v2.0</span>
+    </header>
+
+    <div id="state-initial" class="state active">
+      <div class="info-card">
+        <p>Откройте видео на Rutube и нажмите кнопку ниже</p>
+      </div>
+      <button id="btn-detect" class="btn btn-primary btn-full">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M14 2H2v12h12V2zM6 10l2-2 2 2M10 6l-2 2-2-2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Определить видео
+      </button>
+    </div>
+
+    <div id="state-loading" class="state">
+      <div class="spinner"></div>
+      <p class="loading-text">Поиск видео потока...</p>
+    </div>
+
+    <div id="state-video" class="state">
+      <div class="video-info">
+        <img id="video-thumb" class="video-thumb" src="" alt="">
+        <div class="video-meta">
+          <h2 id="video-title" class="video-title"></h2>
+          <p id="video-author" class="video-author"></p>
+          <p id="video-quality" class="video-duration"></p>
+        </div>
+      </div>
+
+      <div id="quality-list" class="quality-list"></div>
+
+      <button id="btn-download" class="btn btn-success btn-full">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2v8m0 0l3-3m-3 3L5 7M2 12v1a2 2 0 002 2h8a2 2 0 002-2v-1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Скачать
+      </button>
+
+      <button id="btn-back" class="btn btn-ghost btn-full">Назад</button>
+    </div>
+
+    <div id="state-downloading" class="state">
+      <div class="download-progress">
+        <div class="progress-bar">
+          <div id="progress-fill" class="progress-fill"></div>
+        </div>
+        <p id="progress-text" class="progress-text">0%</p>
+      </div>
+      <p id="progress-status" class="progress-status">Скачивание сегментов...</p>
+    </div>
+
+    <div id="state-done" class="state">
+      <div class="success-icon">
+        <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+          <circle cx="24" cy="24" r="22" stroke="#22c55e" stroke-width="3"/>
+          <path d="M14 24l7 7 13-13" stroke="#22c55e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <p class="done-text">Готово!</p>
+      <button id="btn-new" class="btn btn-primary btn-full">Скачать ещё</button>
+    </div>
+
+    <div id="state-error" class="state">
+      <div class="error-icon">
+        <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+          <circle cx="24" cy="24" r="22" stroke="#ef4444" stroke-width="3"/>
+          <path d="M16 16l16 16M32 16L16 32" stroke="#ef4444" stroke-width="3" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <p id="error-text" class="error-text"></p>
+      <button id="btn-retry" class="btn btn-primary btn-full">Повторить</button>
+    </div>
+
+    <footer class="footer">
+      <span>Чистое расширение, без серверов</span>
+    </footer>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
